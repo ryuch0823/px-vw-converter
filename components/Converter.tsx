@@ -130,7 +130,7 @@ function ConverterInner({ i18nInstance }: { i18nInstance: i18n }) {
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
             setPxInput(e.target.value)
           }
-          placeholder="example: width: 150px;"
+          placeholder="example : width: 150px;"
           className="w-full md:w-1/2 h-[50vh] md:h-full p-2 border rounded resize-none font-mono text-sm leading-5 bg-white"
         />
 
