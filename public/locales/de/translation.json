@@ -1,0 +1,8 @@
+{
+    "title": "PX zu VW Konverter",
+    "viewportLabel": "Viewport-Breite (px):",
+    "copyButton": "Kopieren",
+    "copied": "Kopiert!",
+    "error": "Ungültiger px-Wert erkannt",
+    "intro": "Entdecken Sie unseren kostenlosen PX-zu-VW-Konverter, ein einfaches Tool zur CSS-Einheitenumrechnung für responsives Design. Wandeln Sie Pixelwerte (PX) mühelos in Viewport-Breiten-Einheiten (VW) um, um Ihre Web-Layouts zu optimieren. Wählen Sie eine Viewport-Breite, geben Sie Ihre PX-Werte ein und erhalten Sie sofort VW-Ergebnisse—ideal für Entwickler und Designer!"
+  }

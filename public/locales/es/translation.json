@@ -1,0 +1,8 @@
+{
+    "title": "Convertidor de PX a VW",
+    "viewportLabel": "Ancho de Viewport (px):",
+    "copyButton": "Copiar",
+    "copied": "¡Copiado!",
+    "error": "Valor px inválido detectado",
+    "intro": "Descubre nuestro Conversor PX a VW gratuito, una herramienta simple para la conversión de unidades CSS diseñada para el diseño responsivo. Convierte fácilmente valores en píxeles (PX) a unidades de ancho de viewport (VW) para optimizar tus diseños web. Para usarlo, selecciona un ancho de viewport, introduce tus valores PX y obtén resultados VW al instante—ideal para desarrolladores y diseñadores!"
+  }

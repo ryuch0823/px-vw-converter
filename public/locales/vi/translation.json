@@ -1,0 +1,8 @@
+{
+    "title": "Bộ chuyển đổi PX sang VW",
+    "viewportLabel": "Chiều rộng Viewport (px):",
+    "copyButton": "Sao chép",
+    "copied": "Đã sao chép!",
+    "error": "Phát hiện giá trị px không hợp lệ",
+    "intro": "Khám phá Công cụ Chuyển đổi PX sang VW miễn phí của chúng tôi, một công cụ đơn giản để chuyển đổi đơn vị CSS dành cho thiết kế đáp ứng. Dễ dàng chuyển đổi giá trị pixel (PX) sang đơn vị chiều rộng viewport (VW) để tối ưu hóa bố cục web của bạn. Để sử dụng, chọn chiều rộng viewport, nhập giá trị PX và nhận kết quả VW ngay lập tức—hoàn hảo cho nhà phát triển và nhà thiết kế!"
+  }
