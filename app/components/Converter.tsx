@@ -3,18 +3,23 @@
 import { useState, useEffect, ChangeEvent, useCallback, Suspense } from 'react';
 import { useTranslation, I18nextProvider } from 'react-i18next';
 import { i18n } from 'i18next';
+import Footer from './Footer';
+import { useRouter } from 'next/navigation'; // ← 追加
 
-// i18nを動的にインポート（SSR無効化）
-const i18nPromise = import('../i18n').then((module) => module.default);
 
-// メインコンポーネントを分離
+
+
+const i18nPromise = import('../../i18n').then((module) => module.default);
+
+// メインUIコンポーネント
 function ConverterInner({ i18nInstance }: { i18nInstance: i18n }) {
+  const router = useRouter(); 
   const { t } = useTranslation(undefined, { i18n: i18nInstance });
   const [viewportWidth, setViewportWidth] = useState<number>(375);
   const [pxInput, setPxInput] = useState<string>('');
   const [vwOutput, setVwOutput] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState<boolean>(false); // コピー状態のフラグ
+  const [copied, setCopied] = useState<boolean>(false);
 
   const viewportPresets = [375, 414, 750, 768, 1440, 1920];
   const languages = [
@@ -52,7 +57,6 @@ function ConverterInner({ i18nInstance }: { i18nInstance: i18n }) {
   const handleCopy = () => {
     navigator.clipboard.writeText(vwOutput).then(() => {
       setCopied(true);
-      // 2秒後にコピー状態を解除
       setTimeout(() => setCopied(false), 2000);
     }).catch(() => {
       setError(t('copyError') || 'Copy failed');
@@ -65,6 +69,10 @@ function ConverterInner({ i18nInstance }: { i18nInstance: i18n }) {
 
   const handleLanguageChange = (lang: string) => {
     i18nInstance.changeLanguage(lang);
+  
+    // 言語ごとにURLを切り替える
+    const newPath = lang === 'en' ? '/' : `/${lang}`;
+    router.push(newPath);
   };
 
   return (
@@ -141,25 +149,29 @@ function ConverterInner({ i18nInstance }: { i18nInstance: i18n }) {
             className="flex-1 p-2 border rounded resize-none font-mono text-sm leading-5 bg-gray-100"
           />
           <button
-  onClick={handleCopy}
-  className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 shrink-0 relative z-10"
->
-  {copied ? t('copied') : t('copyButton')}
-</button>
+            onClick={handleCopy}
+            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 shrink-0 relative z-10"
+          >
+            {copied ? t('copied') : t('copyButton')}
+          </button>
         </div>
       </div>
-      <div className="pt-[3vh] text-xs text-center">©2025 PX-VW COMVERTER.</div>
+      <Footer />
     </div>
   );
 }
 
-// ラッパーコンポーネント
-export default function Converter() {
+// ✅ Wrapper Component
+export default function Converter({ lang }: { lang?: string }) {
   const [i18nInstance, setI18nInstance] = useState<i18n | null>(null);
 
   useEffect(() => {
-    i18nPromise.then((i18n) => setI18nInstance(i18n));
-  }, []);
+    i18nPromise.then((i18n) => {
+      const targetLang = lang || 'en';
+      i18n.changeLanguage(targetLang);
+      setI18nInstance(i18n);
+    });
+  }, [lang]);
 
   if (!i18nInstance) {
     return <div>Loading...</div>;

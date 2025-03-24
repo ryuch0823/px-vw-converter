@@ -1,11 +1,14 @@
 "use client";
 
-import "./globals.css"; // ✅ `app/globals.css` が `app/` 内にある場合
+import "./globals.css";
+import Footer from "./components/Footer"; // フッターを読み込み
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="min-h-screen flex flex-col">
+        <main className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }
