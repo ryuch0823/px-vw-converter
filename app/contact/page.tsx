@@ -3,9 +3,8 @@
 
 
 import { useState } from 'react';
-import { sendContactForm } from './actions';
 import Footer from '../components/Footer';
-
+import { sendContactForm } from './actions';
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
