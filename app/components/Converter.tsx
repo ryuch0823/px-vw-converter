@@ -5,6 +5,7 @@ import { useTranslation, I18nextProvider } from 'react-i18next';
 import { i18n } from 'i18next';
 import Footer from './Footer';
 import { useRouter } from 'next/navigation'; // ← 追加
+import ToolNav from "./ToolNav";
 
 
 
@@ -76,7 +77,8 @@ function ConverterInner({ i18nInstance }: { i18nInstance: i18n }) {
   };
 
   return (
-    <div className="w-[90vw] mx-auto pt-[5vh] pb-[4vh] h-[100vh] flex flex-col">
+    <div className="w-[90vw] mx-auto pt-[2vh] pb-[4vh] h-[100vh] flex flex-col">
+       <ToolNav /> 
       <div className="flex flex-col items-center mb-4 shrink-0">
         <div className="flex gap-2 mb-[3vh]">
           <div className="px-2 py-1">Languages:</div>
